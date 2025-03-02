@@ -1,0 +1,9 @@
+link : https://en.wikipedia.org/wiki/Lists_of_ISO_639_codes
+link2: https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
+link3: https://en.wikipedia.org/wiki/List_of_ISO_639-3_codes
+
+ja = Japanese
+kro = Korean
+zh-cn = 中文(Zhōngwén) - China
+ru = Russia
+en-us = English - United States

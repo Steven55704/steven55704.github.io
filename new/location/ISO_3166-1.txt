@@ -1,0 +1,9 @@
+link : https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
+link2: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
+
+ww = Global/Worldwide
+jp = Japan
+kr = Korea
+cn = China
+ru = Russia
+us = United States
