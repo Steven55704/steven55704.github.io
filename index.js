@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let userLang = navigator.language.toLowerCase();
     
     function getLanguagePath(lang) {
-        return `new/languages/${lang}/home.html`; // index.html/${lang}/
+        return `new/languages/${lang}/home.html`; // yorwebsite.com/${lang}/ should appear in the url but not possible in static hosting (github hosting)
     }
     
     function setLanguage(lang) {
