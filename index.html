@@ -3,121 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Detect Language & Region</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .top-bar {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            background: #222;
-            padding: 10px;
-            color: white;
-        }
-        .flag-container {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            position: relative;
-        }
-        .flag-container img {
-            width: 24px;
-            height: 16px;
-            margin-right: 8px;
-        }
-        .dropdown {
-            display: none;
-            position: absolute;
-            background: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 10px;
-            right: 10px;
-            top: 40px;
-            border-radius: 4px;
-            z-index: 1000;
-        }
-        .dropdown select {
-            width: 100%;
-            padding: 5px;
-            margin-bottom: 5px;
-        }
-    </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", async function () {
-            const languages = {"en-us": "English", "zh-cn": "中文", "ko": "한국어", "ja": "日本語", "ru": "Русский"};
-            const regions = {"US": "en-us", "CN": "zh-cn", "KR": "ko", "JP": "ja", "RU": "ru"};
-            let userRegion = "US";
-            let userLanguage = "en-us";
-            
-            async function fetchIPLocation() {
-                try {
-                    let response = await fetch('https://ipapi.co/json/');
-                    let data = await response.json();
-                    userRegion = data.country || "US";
-                    userLanguage = regions[userRegion] || "en-us";
-                    setRegion(userRegion);
-                    setLanguage(userLanguage);
-                } catch (error) {
-                    console.error("Failed to fetch location", error);
-                }
-            }
-            
-            function setRegion(region) {
-                let flagIcon = document.getElementById("flag-icon");
-                flagIcon.src = `https://flagcdn.com/${region.toLowerCase()}.svg`;
-                flagIcon.alt = region;
-                document.getElementById("location-select").value = region;
-            }
-            
-            function setLanguage(language) {
-                document.getElementById("language-select").value = language;
-            }
-            
-            fetchIPLocation();
-            
-            document.getElementById("location-select").addEventListener("change", function (event) {
-                let newRegion = event.target.value;
-                setRegion(newRegion);
-            });
-            
-            document.getElementById("language-select").addEventListener("change", function (event) {
-                let newLanguage = event.target.value;
-                setLanguage(newLanguage);
-            });
-            
-            document.getElementById("flag-container").addEventListener("click", function () {
-                let dropdown = document.getElementById("language-dropdown");
-                dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-            });
-        });
-    </script>
+    <!-- <meta http-equiv="refresh" content="0;url=Old Version/home.html"> Change target.html to your target file -->
+    <!-- <title>Redirecting...</title> -->
+    <title>Vanilla</title>
+    <link rel="stylesheet" href="index.css">
+    <!-- <script src="index.js" type="text/javascript"></script> -->
+     
 </head>
 <body>
-    <div class="top-bar">
-        <div class="flag-container" id="flag-container">
-            <img id="flag-icon" src="" alt="Country Flag">
-            <span>SIGN IN</span>
-        </div>
-        <div class="dropdown" id="language-dropdown">
-            <label for="location-select">Location:</label>
-            <select id="location-select">
-                <option value="US">United States</option>
-                <option value="CN">China</option>
-                <option value="KR">South Korea</option>
-                <option value="JP">Japan</option>
-                <option value="RU">Russia</option>
-            </select>
-            <label for="language-select">Select Language:</label>
-            <select id="language-select">
-                <option value="en-us">English</option>
-                <option value="zh-cn">中文</option>
-                <option value="ko">한국어</option>
-                <option value="ja">日本語</option>
-                <option value="ru">Русский</option>
-            </select>
-        </div>
-    </div>
+
+    <!-- <p>If you are not redirected, <a href="Old Version/home.html">click here</a>.</p> -->
+
+    <!-- Dropdown for manual language selection 
+    <label for="language">Choose Language:</label>
+    <select id="language" onchange="updateTranslation(this.value)">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="jp">日本語</option>
+        <option value="zh">中文</option>
+    </select>
+    -->
+
 </body>
 </html>
