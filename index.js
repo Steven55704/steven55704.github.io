@@ -3,12 +3,12 @@
 document.addEventListener("DOMContentLoaded", function ()
 {
 
-    // Variables - vanillakei/Judiell
+    // Variables - vanillakei/Judiell :)
 
-    const languages = {"en-us": "English", "zh-cn": "中文", "ko": "한국어", "ja": "日本語", "ru": "Русский"};
-    const regions = {"US": "en-us", "CN": "zh-cn", "KR": "ko", "JP": "ja", "RU": "ru"};
-    let userLang = navigator.language.toLowerCase();
-    let userRegion = "US"; 
+    const Language = {"en-us": "English", "zh-cn": "中文", "ko": "한국어", "ja": "日本語", "ru": "Русский"};
+    const Country = {"US": "en-us", "CN": "zh-cn", "KR": "ko", "JP": "ja", "RU": "ru"};
+    let language = navigator.language.toLowerCase();
+    let country = "US"; 
 
     //
     //
@@ -16,29 +16,32 @@ document.addEventListener("DOMContentLoaded", function ()
     //
     //
 
-    async function fetchIPLocation()
+    async function FetchIPLocation()
     {
         try
         {
             let response = await fetch("https://ipapi.co/json/");
             let data = await response.json();
-            userRegion = data.country_code || "US";
-            setRegion(userRegion);
+            country = data.country_code || "US";
+            SetCountry(country);
         } catch (error)
         {
             console.error("Failed to fetch location", error);
         }
     }
 
-    function setRegion(region) {
+    function SetCountry(country) {
         let flagIcon = document.getElementById("flag-icon");
-        flagIcon.src = `https://flagcdn.com/${region.toLowerCase()}.svg`;
-        flagIcon.alt = region;
+        flagIcon.src = `https://flagcdn.com/${country.toLowerCase()}.svg`;
+        flagIcon.alt = country;
     }
 
-    document.getElementById("language-select").addEventListener("change", function (event) {
-        setLanguage(event.target.value);
+    document.getElementById("location-select").addEventListener("change", function (event) {
+        let NewCountry = event.target.value;
+        SetCountry(NewCountry);
     });
+
+    FetchIPLocation();
     
     //
     //
@@ -46,28 +49,50 @@ document.addEventListener("DOMContentLoaded", function ()
     //
     //
 
-    function getLanguagePath(lang) {
-        return `new/languages/${lang}/home.html`; // yorwebsite.com/${lang}/ should appear in the url but not possible in static hosting (github hosting)
+    document.getElementById("language-select").addEventListener("change", function (event) {
+        let newLanguage = event.target.value;
+        setLanguage(newLanguage);
+    });
+
+    function GetLanguagePath(lang) {
+        return `new/Language/${lang}/home.html`; // yorwebsite.com/${lang}/ should appear in the url but not possible in static hosting (github hosting)
     }
     
-    function setLanguage(lang) {
+    function SetLanguage(lang) {
         window.location.href = getLanguagePath(lang);
     }
+
+    function SetLanguage(lang) {
+        document.getElementById("language-select").value = lang;
+    }
+
+    function DetectLanguage() {
+        for (let lang of languages) {
+            if (userLang.startsWith(lang.split('-')[0])) {
+                SetLanguage(lang);
+                return;
+            }
+        }
+        SetLanguage("en-us"); // Default to English if not matched
+    }
     
-    function detectLanguage() {
-        let detectedLang = regions[userRegion] || "en-us";
-        if (languages[userLang]) {
-            detectedLang = userLang;
+    // Removed function might be helpful later - chris :)
+    /* 
+    function DetectLanguage() {
+        let DetectedLang = Country[country] || "en-us";
+        if (Language[language]) {
+            DetectedLang = language;
         }
         setLanguage(detectedLang);
     }
+    */
     
     if (!window.location.pathname.match(/^\/(en-us|zh-cn|ko|ja|ru)\//)) {
-        detectLanguage();
+        DetectLanguage();
     }
     
     document.getElementById("language-select").addEventListener("change", function (event) {
-        setLanguage(event.target.value);
+        SetLanguage(event.target.value);
     });
 
     document.getElementById("flag-container").addEventListener("click", function () {

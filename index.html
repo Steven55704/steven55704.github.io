@@ -15,15 +15,30 @@
     <!-- <p>If you are not redirected, <a href="Old Version/home.html">click here</a>.</p> -->
 
     <!-- Dropdown for manual language selection 
-    <label for="language">Choose Language:</label>
-    <select id="language" onchange="updateTranslation(this.value)">
-        <option value="en">English</option>
-        <option value="es">Español</option>
-        <option value="fr">Français</option>
-        <option value="de">Deutsch</option>
-        <option value="jp">日本語</option>
-        <option value="zh">中文</option>
-    </select>
+    <div class="top-bar">
+        <div class="flag-container" id="flag-container">
+            <img id="flag-icon" src="" alt="Country Flag">
+            <span>SIGN IN</span>
+        </div>
+        <div class="dropdown" id="language-dropdown">
+            <label for="location-select">Location:</label>
+            <select id="location-select">
+                <option value="US">United States</option>
+                <option value="CN">China</option>
+                <option value="KR">South Korea</option>
+                <option value="JP">Japan</option>
+                <option value="RU">Russia</option>
+            </select>
+            <label for="language-select">Select Language:</label>
+            <select id="language-select">
+                <option value="en-us">English</option>
+                <option value="zh-cn">中文</option>
+                <option value="ko">한국어</option>
+                <option value="ja">日本語</option>
+                <option value="ru">Русский</option>
+            </select>
+        </div>
+    </div>
     -->
 
 </body>
